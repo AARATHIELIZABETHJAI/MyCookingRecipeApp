@@ -5,8 +5,8 @@ import android.content.SearchRecentSuggestionsProvider
 class MySuggestionContentProvider : SearchRecentSuggestionsProvider() {
     init {
         setupSuggestions(
-            AUTHORITY,
-            MODE
+                AUTHORITY,
+                MODE
         )
     }
 

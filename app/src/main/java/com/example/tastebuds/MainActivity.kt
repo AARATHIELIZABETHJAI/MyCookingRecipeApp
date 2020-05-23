@@ -40,11 +40,11 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolBar.toolBar)
         drawerLayout = binding.mainDrawerLayout
         val actionBarDrawerToggle = ActionBarDrawerToggle(
-            this,
-            binding.mainDrawerLayout,
-            binding.toolBar.toolBar,
-            R.string.navigation_drawer_open,
-            R.string.navigation_drawer_close
+                this,
+                binding.mainDrawerLayout,
+                binding.toolBar.toolBar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close
         )
         drawerLayout.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()

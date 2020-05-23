@@ -1,7 +1,4 @@
 <resources>
-    <string name="app_name">TasteBuds</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="account">Account</string>
     <string name="favourites">Favourites</string>
@@ -13,4 +10,5 @@
     <string name="navigation_drawer_close">Close Navigation Drawer</string>
     <string name="search_hint">Search Recipe</string>
     <string name="search_menu_title">Search for Recipes</string>
+    <string name="app_name">TasteBuds</string>
 </resources>

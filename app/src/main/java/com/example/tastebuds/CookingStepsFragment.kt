@@ -9,15 +9,14 @@ import android.view.ViewGroup
 /**
  * A simple [Fragment] subclass.
  */
-class NaviagtionFragment : Fragment() {
+class CookingStepsFragment : Fragment() {
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_naviagtion, container, false)
+        return inflater.inflate(R.layout.fragment_cooking_steps, container, false)
     }
 
-//    fun setUp()
 }

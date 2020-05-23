@@ -1,23 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content" android:layout_height="wrap_content">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="recipeModel"
+            type="com.example.tastebuds.Result" />
+        <variable
+            name="clickListener"
+            type="com.example.tastebuds.MyAdapter.OnRecipeItemClickListener" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:onClick="@{() -> clickListener.onClick(recipeModel)}"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_margin="4dp"
+        app:cardCornerRadius="4dp">
 
-        <ImageView
-            android:id="@+id/recipeImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </ImageView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="4dp">
 
-        <TextView
-            android:id="@+id/recipeName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </TextView>
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/recipeImage"
+                app:image="@{recipeModel.image}"
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+            </ImageView>
 
-</androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/recipeName"
+                android:text="@{recipeModel.title}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp">
+            </TextView>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
