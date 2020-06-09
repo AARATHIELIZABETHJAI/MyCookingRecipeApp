@@ -5,8 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.tastebuds.Converters
-import com.example.tastebuds.RecipeDetail
+import com.example.tastebuds.util.Converters
+import com.example.tastebuds.persistence.models.RecipeDetail
 import com.example.tastebuds.ui.adapters.ShoppingList
 
 @Database(

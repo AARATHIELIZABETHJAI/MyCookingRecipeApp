@@ -5,7 +5,7 @@
     <data>
         <variable
             name="recipeDetailModel"
-            type="com.example.tastebuds.RecipeDetail" />
+            type="com.example.tastebuds.persistence.models.RecipeDetail" />
         <variable
             name="clickListener"
             type="com.example.tastebuds.ui.adapters.FavouriteRecipesAdapter.OnRecipeItemClickListener" />

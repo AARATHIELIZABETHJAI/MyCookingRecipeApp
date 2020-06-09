@@ -1,4 +1,4 @@
-package com.example.tastebuds
+package com.example.tastebuds.util
 
 import android.R.attr
 import android.graphics.Bitmap

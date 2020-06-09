@@ -5,9 +5,10 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.tastebuds.*
+import com.example.tastebuds.data.network.responses.ServiceResponse
 import com.example.tastebuds.data.repository.UserRepository
 import com.example.tastebuds.persistence.AppDataBase
+import com.example.tastebuds.persistence.models.RecipeDetail
 import com.example.tastebuds.ui.adapters.ShoppingList
 import com.google.gson.internal.LinkedTreeMap
 import kotlinx.coroutines.*

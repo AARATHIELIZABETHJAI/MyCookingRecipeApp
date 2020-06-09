@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tastebuds.R
-import com.example.tastebuds.RecipeDetail
+import com.example.tastebuds.persistence.models.RecipeDetail
 import com.example.tastebuds.databinding.FavouriteRecyclerviewItemBinding
 
 

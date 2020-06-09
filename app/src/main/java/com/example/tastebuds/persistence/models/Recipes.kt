@@ -1,4 +1,4 @@
-package com.example.tastebuds
+package com.example.tastebuds.persistence.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

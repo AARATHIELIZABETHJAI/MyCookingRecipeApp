@@ -1,4 +1,4 @@
-package com.example.tastebuds
+package com.example.tastebuds.persistence.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -33,6 +33,9 @@ data class ExtendedIngredient(
 data class Nutrition(
     val caloricBreakdown: CaloricBreakdown
 )
+
+
+
 
 data class Nutrient(
     val amount: Int,

@@ -5,7 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.example.tastebuds.Recipes
+import com.example.tastebuds.persistence.models.Recipes
 
 @Dao
 interface RecipesDao {

@@ -3,7 +3,7 @@ package com.example.tastebuds.data.repository
 
 import androidx.lifecycle.MutableLiveData
 import com.example.tastebuds.persistence.FavouriteRecipesDao
-import com.example.tastebuds.RecipeDetail
+import com.example.tastebuds.persistence.models.RecipeDetail
 import com.example.tastebuds.Result
 import com.example.tastebuds.persistence.ShoppingListDao
 import com.example.tastebuds.data.network.ApiHelper

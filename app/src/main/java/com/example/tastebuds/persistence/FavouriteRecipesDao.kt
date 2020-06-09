@@ -2,7 +2,7 @@ package com.example.tastebuds.persistence
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.tastebuds.RecipeDetail
+import com.example.tastebuds.persistence.models.RecipeDetail
 
 @Dao
 interface FavouriteRecipesDao {

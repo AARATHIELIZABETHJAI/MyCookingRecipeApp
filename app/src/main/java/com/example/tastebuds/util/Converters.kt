@@ -1,6 +1,8 @@
-package com.example.tastebuds
+package com.example.tastebuds.util
 
 import androidx.room.TypeConverter
+import com.example.tastebuds.persistence.models.ExtendedIngredient
+import com.example.tastebuds.persistence.models.Nutrition
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

@@ -1,4 +1,3 @@
-package com.example.tastebuds
 
 data class ResponseData(
         val number: Int,
