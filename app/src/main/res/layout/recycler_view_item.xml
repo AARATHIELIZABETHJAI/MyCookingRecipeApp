@@ -8,7 +8,7 @@
             type="com.example.tastebuds.Result" />
         <variable
             name="clickListener"
-            type="com.example.tastebuds.MyAdapter.OnRecipeItemClickListener" />
+            type="com.example.tastebuds.ui.adapters.RecipeListAdapter.OnRecipeItemClickListener" />
 
     </data>
 

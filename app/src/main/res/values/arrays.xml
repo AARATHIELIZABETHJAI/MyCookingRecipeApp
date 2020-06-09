@@ -1,0 +1,21 @@
+
+<resources>
+    <integer-array name="cuisineDrawable">
+        <item>@drawable/continental</item>
+        <item>@drawable/chinese</item>
+        <item>@drawable/indian</item>
+        <item>@drawable/italian</item>
+        <item>@drawable/mediterranean</item>
+    </integer-array>
+
+    <integer-array name="categoryDrawable">
+        <item>@drawable/salad</item>
+        <item>@drawable/starters</item>
+        <item>@drawable/desserts</item>
+        <item>@drawable/soups</item>
+        <item>@drawable/soups</item>
+        <item>@drawable/soups</item>
+        <item>@drawable/soups</item>
+        <item>@drawable/soups</item>
+    </integer-array>
+</resources>

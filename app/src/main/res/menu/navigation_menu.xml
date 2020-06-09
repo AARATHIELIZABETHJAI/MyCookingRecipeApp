@@ -4,29 +4,29 @@
     tools:showIn="navigationView">
     <group android:id="@+id/group1" android:checkableBehavior="single">
         <item
-            android:id="@+id/account"
+            android:id="@id/homeFragment"
+            android:title="@string/home"
+            android:icon="@drawable/ic_home_black_24dp"/>
+        <item
+            android:id="@id/accountFragment"
             android:title="@string/account"
             android:icon="@drawable/ic_account_circle_black_24dp"/>
         <item
-            android:id="@+id/favourites"
+            android:id="@id/favouritesFragment"
             android:title="@string/favourites"
             android:icon="@drawable/ic_account_circle_black_24dp"/>
         <item
-            android:id="@+id/shopping_list"
+            android:id="@id/shoppingListFragment"
             android:title="@string/shopping_list"
-            android:icon="@drawable/ic_account_circle_black_24dp"/>
-        <item
-            android:id="@+id/recipe_finder"
-            android:title="@string/recipe_finder"
             android:icon="@drawable/ic_account_circle_black_24dp"/>
     </group>
 
     <item
-        android:id="@+id/settings"
+        android:id="@id/settingsFragment"
         android:title="@string/settings"
         android:icon="@drawable/ic_account_circle_black_24dp"/>
     <item
-        android:id="@+id/help"
+        android:id="@id/helpFragment"
         android:title="@string/help"
         android:icon="@drawable/ic_account_circle_black_24dp"/>
 </menu>

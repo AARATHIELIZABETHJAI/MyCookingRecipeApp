@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="recipeDetailModel"
+            type="com.example.tastebuds.RecipeDetail" />
+        <variable
+            name="clickListener"
+            type="com.example.tastebuds.ui.adapters.FavouriteRecipesAdapter.OnRecipeItemClickListener" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> clickListener.onClick(recipeDetailModel)}"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_margin="4dp"
+        app:cardCornerRadius="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp">
+
+            <ImageView
+                android:id="@+id/recipeImage"
+                app:image="@{recipeDetailModel.image}"
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+            </ImageView>
+
+            <TextView
+                android:id="@+id/recipeName"
+                android:layout_below="@id/recipeImage"
+                android:text="@{recipeDetailModel.title}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp">
+            </TextView>
+
+            <ToggleButton
+                android:id="@+id/toggleButton"
+                android:elevation="4dp"
+                android:checked="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="160dp"
+                android:layout_marginTop="110dp"
+                android:background="@android:color/transparent"
+                android:button="@drawable/ic_favorite_orange"
+                android:textOff=""
+                android:textOn="" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

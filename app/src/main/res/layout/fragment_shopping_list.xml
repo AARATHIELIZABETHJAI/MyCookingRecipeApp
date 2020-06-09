@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.tastebuds.viewmodel.AppViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:id="@id/shoppingListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        tools:context=".ui.fragments.ShoppingListFragment">
+
+        <ListView
+            android:id="@+id/shoppingListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true" />
+
+        <Button
+            android:id="@+id/deleteButton"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:backgroundTint="@color/grey"
+            android:gravity="center"
+            android:paddingVertical="8dp"
+            android:text="DELETE"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:visibility="gone"
+            app:iconTint="#FFFFFF" />
+
+    </RelativeLayout>
+</layout>

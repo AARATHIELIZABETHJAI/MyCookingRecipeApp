@@ -3,26 +3,64 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/recipeListFragment">
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.tastebuds.ui.fragments.HomeFragment"
+        android:label="TasteBuds"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_recipeListFragment"
+            app:destination="@id/recipeListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_recipeDetailFragment"
+            app:destination="@id/recipeDetailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/recipeListFragment"
-        android:name="com.example.tastebuds.RecipeListFragment"
+        android:name="com.example.tastebuds.ui.fragments.RecipeListFragment"
         android:label="RecipeListFragment" >
-<!--        <action-->
-<!--            android:id="@+id/action_recipeListFragment_to_recipeDetailsFragment"-->
-<!--            app:destination="@id/recipeDetailsFragment"-->
-<!--            app:launchSingleTop="false"-->
-<!--            app:popUpTo="@id/recipeListFragment" />-->
         <action
             android:id="@+id/action_recipeListFragment_to_recipeDetailFragment"
             app:destination="@id/recipeDetailFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/recipeDetailFragment"
-        android:name="com.example.tastebuds.RecipeDetailFragment"
-        android:label="fragment_recipe_detail"
+        android:name="com.example.tastebuds.ui.fragments.RecipeDetailFragment"
+        android:label=""
         tools:layout="@layout/fragment_recipe_detail" />
 
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.example.tastebuds.ui.fragments.AccountFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" />
 
+    <fragment
+        android:id="@+id/favouritesFragment"
+        android:name="com.example.tastebuds.ui.fragments.FavouritesFragment"
+        android:label="fragment_favourites"
+        tools:layout="@layout/fragment_favourites" >
+        <action
+            android:id="@+id/action_favouritesFragment_to_recipeDetailFragment"
+            app:destination="@id/recipeDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shoppingListFragment"
+        android:name="com.example.tastebuds.ui.fragments.ShoppingListFragment"
+        android:label="fragment_shopping_list"
+        tools:layout="@layout/fragment_shopping_list" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.tastebuds.ui.fragments.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="com.example.tastebuds.ui.fragments.HelpFragment"
+        android:label="fragment_help"
+        tools:layout="@layout/fragment_help" />
 </navigation>
