@@ -3,7 +3,7 @@ package com.example.tastebuds.data.network
 
 import com.example.tastebuds.data.network.responses.DailyRecipe
 import com.example.tastebuds.persistence.models.RecipeDetail
-import com.example.tastebuds.ResponseData
+import com.example.tastebuds.data.network.responses.ResponseData
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import retrofit2.Response
 import retrofit2.Retrofit

@@ -13,8 +13,8 @@
         <item>@drawable/starters</item>
         <item>@drawable/desserts</item>
         <item>@drawable/soups</item>
-        <item>@drawable/soups</item>
-        <item>@drawable/soups</item>
+        <item>@drawable/cakes</item>
+        <item>@drawable/maindish</item>
         <item>@drawable/soups</item>
         <item>@drawable/soups</item>
     </integer-array>

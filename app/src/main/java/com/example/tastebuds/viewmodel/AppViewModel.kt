@@ -5,6 +5,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.tastebuds.data.network.responses.Result
 import com.example.tastebuds.data.network.responses.ServiceResponse
 import com.example.tastebuds.data.repository.UserRepository
 import com.example.tastebuds.persistence.AppDataBase
@@ -15,14 +16,14 @@ import kotlinx.coroutines.*
 import kotlin.collections.ArrayList
 
 //https://api.spoonacular.com/recipes/search?query=yogurt&apiKey=beb23c70f0264a09b60b9f0aa44b1ea5
-const val NUMBER_OF_RESULTS = 10;
+const val NUMBER_OF_RESULTS = 10
 const val APIKEY: String = "beb23c70f0264a09b60b9f0aa44b1ea5"
 
 class AppViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: UserRepository
-    val allfavouriteRecipes: LiveData<ArrayList<RecipeDetail>>
-    val shoppingListItems : LiveData<ArrayList<ShoppingList>>
+    val allfavouriteRecipes: LiveData<List<RecipeDetail>>
+    val shoppingListItems : LiveData<List<ShoppingList>>
 
     private var _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean>
@@ -43,8 +44,8 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
             favouriteRecipesDao,
             shoppingListDao
         )
-        allfavouriteRecipes = repository.allFavouriteRecipes as LiveData<ArrayList<RecipeDetail>>
-        shoppingListItems = repository.shoppingListItems as LiveData<ArrayList<ShoppingList>>
+        allfavouriteRecipes = repository.allFavouriteRecipes
+        shoppingListItems = repository.shoppingListItems
         _loading.value = false
         _errorloading.value = false
     }
@@ -67,7 +68,7 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         _loading.value = true
         if ((prevQuery == null) || (recipeName !== prevQuery)) {
             coroutineScope.launch {
-                var serviceResponse =
+                val serviceResponse =
                     repository.searchRecipe(recipeName,
                         APIKEY,
                         NUMBER_OF_RESULTS
@@ -153,7 +154,7 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     fun searchRecipebyId(recipeId: Int) {
         _loading.value = true
         coroutineScope.launch {
-            var serviceResponse = repository.searchRecipebyId(recipeId, true,
+            val serviceResponse = repository.searchRecipebyId(recipeId, true,
                 APIKEY
             )
             withContext(Dispatchers.Main) {
@@ -173,15 +174,15 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun getCookingSteps() :ArrayList<String> {
-        var cookingSteps = ArrayList<String>()
-        var analyzedInstructions =
+        val cookingSteps = ArrayList<String>()
+        val analyzedInstructions =
             recipeDetail.value?.analyzedInstructions?.get(0) as LinkedTreeMap<String, String>
         if (analyzedInstructions.containsKey("steps")) {
-            var stepsArrayList =
+            val stepsArrayList =
                 analyzedInstructions.getValue("steps") as ArrayList<LinkedTreeMap<String, String>>
             for (i in 0..(stepsArrayList.size - 1)) {
                 if (stepsArrayList[i].contains("step")) {
-                    var cookingStep = stepsArrayList[i].getValue("step")
+                    val cookingStep = stepsArrayList[i].getValue("step")
                     cookingSteps.add(cookingStep)
                 }
             }
@@ -198,7 +199,7 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     fun searchDailyRecipe() {
         if (dailyRecipe_received == false) {
             coroutineScope.launch {
-                var serviceResponse = repository.searchDailyRecipe(APIKEY, 1)
+                val serviceResponse = repository.searchDailyRecipe(APIKEY, 1)
                 withContext(Dispatchers.Main) {
                     when (serviceResponse) {
                         is ServiceResponse.Success -> {
@@ -262,7 +263,7 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     fun insertToShoppingList(ingredient : ShoppingList)
     {
         coroutineScope.launch {
-            var id = repository.insertToShoppingList(ingredient)
+            val id = repository.insertToShoppingList(ingredient)
             println("ROW_ ${id}")
         }
     }

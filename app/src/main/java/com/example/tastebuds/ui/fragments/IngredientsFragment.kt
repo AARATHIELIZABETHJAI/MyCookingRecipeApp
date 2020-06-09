@@ -8,6 +8,7 @@ import android.widget.CheckBox
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.tastebuds.R
 import com.example.tastebuds.databinding.FragmentIngredientsBinding
 import com.example.tastebuds.ui.adapters.ShoppingList
 import com.example.tastebuds.viewmodel.AppViewModel
@@ -34,26 +35,22 @@ class IngredientsFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(requireActivity()).get(AppViewModel::class.java)
         binding.viewModel = viewModel
-        var extendedIngredients = viewModel.recipeDetail.value?.extendedIngredients
+        val extendedIngredients = viewModel.recipeDetail.value?.extendedIngredients
         if(extendedIngredients!=null)
         {
-            for (i in 0 until extendedIngredients!!.size)
+            for (i in 0 until extendedIngredients.size)
             {
-                var checkBox = CheckBox(context)
+                val checkBox = CheckBox(context)
                 checkBox.text = extendedIngredients[i].original
                 val params = LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
-//                checkBox.scaleX = 0.8F
-//                checkBox.scaleY = 0.8F
-                checkBox.textSize = 18F
-//                params.leftMargin  = 40
+                checkBox.textSize = 15F
+                params.leftMargin  = 40
                 checkBox.layoutParams = params
-//                params.leftMargin = 123
-//                params.topMargin = 30
                 ingredientsLayout.addView(checkBox)
-                var shoppingList = ShoppingList(extendedIngredients[i].name)
+                val shoppingList = ShoppingList(extendedIngredients[i].name)
                 checkBox.setOnCheckedChangeListener(){buttonView, isChecked ->if (isChecked)
                 {
 

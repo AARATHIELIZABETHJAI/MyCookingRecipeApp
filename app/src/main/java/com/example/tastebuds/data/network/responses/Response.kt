@@ -1,4 +1,4 @@
-
+package com.example.tastebuds.data.network.responses
 data class ResponseData(
         val number: Int,
         val offset: Int,

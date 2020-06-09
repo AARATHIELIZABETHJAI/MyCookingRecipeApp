@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.view.marginLeft
 import androidx.lifecycle.ViewModelProvider
 import com.example.tastebuds.databinding.FragmentCookingStepsBinding
 import com.example.tastebuds.viewmodel.AppViewModel
@@ -36,17 +37,17 @@ class CookingStepsFragment : Fragment() {
             AppViewModelFactory(requireActivity().application)
         ).get(AppViewModel::class.java)
         binding.viewModel = viewModel
-        var cookingSteps = viewModel.getCookingSteps()
+        val cookingSteps = viewModel.getCookingSteps()
         for (i in 0..(cookingSteps.size - 1)) {
-            var textView = TextView(context)
-            var layoutParams = LinearLayout.LayoutParams(
+            val textView = TextView(context)
+            val layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             )
+            layoutParams.setMargins(40,0,10,10)
             textView.layoutParams = layoutParams
-            textView.text = "${i + 1}) ${cookingSteps[i]}"
+            textView.text = "${i + 1})   ${cookingSteps[i]}"
             textView.setPadding(15, 10, 3, 0)
-            textView.setTextSize(25F)
             textView.setTextColor(Color.parseColor("#000000"))
             cookingStepsLayout.addView(textView)
         }

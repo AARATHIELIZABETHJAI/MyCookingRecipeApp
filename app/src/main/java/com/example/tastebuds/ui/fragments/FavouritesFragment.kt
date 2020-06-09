@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.tastebuds.R
 import com.example.tastebuds.databinding.FragmentFavouritesBinding
+import com.example.tastebuds.persistence.models.RecipeDetail
 import com.example.tastebuds.ui.adapters.FavouriteRecipesAdapter
 import com.example.tastebuds.viewmodel.AppViewModel
 import com.example.tastebuds.viewmodel.AppViewModelFactory
@@ -59,7 +60,7 @@ class FavouritesFragment : Fragment() {
 
         viewModel.allfavouriteRecipes.observe(viewLifecycleOwner, Observer {
             if (it != null) {
-                favouriteRecipesAdapter.updateList(it)
+                favouriteRecipesAdapter.updateList(it as ArrayList<RecipeDetail>)
             }
         })
 

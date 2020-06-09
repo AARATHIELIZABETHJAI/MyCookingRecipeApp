@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tastebuds.R
 import com.example.tastebuds.databinding.CategoryRecyclerviewItemBinding
 
-var categories: Array<String> = arrayOf("Salads", "Starters", "Desserts","Soups","Soups","Soups","Soups","Soups")
+var categories: Array<String> = arrayOf("Salads", "Starters", "Desserts","Soups","Cakes","Main Dishes","Soups","Soups")
 class CategoriesAdapter(val ctx:Context,val categoryItemClickListener: OnCategoryItemClickListener) : RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() {
 
     class MyViewHolder(val categoryRecyclerviewItemBinding:CategoryRecyclerviewItemBinding

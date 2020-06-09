@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tastebuds.R
-import com.example.tastebuds.Result
+import com.example.tastebuds.data.network.responses.Result
 import com.example.tastebuds.databinding.RecyclerViewItemBinding
 
 class RecipeListAdapter(val recipeItemClickListener: OnRecipeItemClickListener) :

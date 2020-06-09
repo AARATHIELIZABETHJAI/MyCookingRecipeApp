@@ -4,7 +4,7 @@ package com.example.tastebuds.data.repository
 import androidx.lifecycle.MutableLiveData
 import com.example.tastebuds.persistence.FavouriteRecipesDao
 import com.example.tastebuds.persistence.models.RecipeDetail
-import com.example.tastebuds.Result
+import com.example.tastebuds.data.network.responses.Result
 import com.example.tastebuds.persistence.ShoppingListDao
 import com.example.tastebuds.data.network.ApiHelper
 import com.example.tastebuds.ui.adapters.ShoppingList
@@ -25,19 +25,19 @@ class UserRepository(val favouriteRecipesDao: FavouriteRecipesDao, val shoppingL
     suspend fun searchDailyRecipe(apiKey: String, numberofResults: Int) =
         ApiHelper.searchDailyRecipe(apiKey, numberofResults)
 
-    suspend fun insertFavouriteRecipe(recipeDetail: RecipeDetail) {
+    fun insertFavouriteRecipe(recipeDetail: RecipeDetail) {
         favouriteRecipesDao.insert(recipeDetail)
     }
 
-    suspend fun deleteFavouriteRecipe(recipeDetail: RecipeDetail) {
+    fun deleteFavouriteRecipe(recipeDetail: RecipeDetail) {
         favouriteRecipesDao.delete(recipeDetail)
     }
 
-    suspend fun deleteAllFavouriteRecipes() {
+    fun deleteAllFavouriteRecipes() {
         favouriteRecipesDao.deleteAllFavouriteRecipes()
     }
 
-    suspend fun getFavouriteRecipe(recipeId:Int)= favouriteRecipesDao.getFavouriteRecipe(recipeId)
+    fun getFavouriteRecipe(recipeId:Int)= favouriteRecipesDao.getFavouriteRecipe(recipeId)
 
     fun insertToShoppingList(shoppingList: ShoppingList) = shoppingListDao.insert(shoppingList)
 
