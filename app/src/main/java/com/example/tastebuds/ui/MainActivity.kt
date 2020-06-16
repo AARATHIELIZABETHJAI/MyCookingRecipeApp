@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         // Update action bar to reflect navigation
         setupActionBarWithNavController(navController, appBarConfiguration)
-        
+
         // Tie nav graph to items in nav drawer
         nav_view.setupWithNavController(navController)
     }
