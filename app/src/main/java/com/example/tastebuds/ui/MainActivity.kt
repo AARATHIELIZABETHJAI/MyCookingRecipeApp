@@ -38,17 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         // Update action bar to reflect navigation
         setupActionBarWithNavController(navController, appBarConfiguration)
-
-//       navController.addOnDestinationChangedListener { controller, destination, arguments ->
-//           if (destination.id==R.id.recipeDetailFragment)
-//       {
-//               binding.toolBar.toolBar.visibility = View.VISIBLE
-//       }
-//       else            {
-//           binding.toolBar.toolBar.visibility = View.VISIBLE
-//       }
-//       }
-
+        
         // Tie nav graph to items in nav drawer
         nav_view.setupWithNavController(navController)
     }

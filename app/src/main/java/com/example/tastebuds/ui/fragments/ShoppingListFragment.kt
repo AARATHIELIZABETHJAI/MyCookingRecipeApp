@@ -13,6 +13,7 @@ import com.example.tastebuds.databinding.FragmentShoppingListBinding
 import com.example.tastebuds.ui.adapters.ShoppingList
 import com.example.tastebuds.viewmodel.AppViewModel
 import kotlinx.android.synthetic.main.fragment_shopping_list.*
+import java.util.ArrayList
 
 /**
  * A simple [Fragment] subclass.
@@ -46,7 +47,7 @@ class ShoppingListFragment : Fragment() {
             viewModel.deleteFromShoppingList(deleteIngredient!!)
         }
         viewModel.shoppingListItems.observe(viewLifecycleOwner, Observer {
-            shoppingListAdapter.updateList(it)
+            shoppingListAdapter.updateList(it as ArrayList<ShoppingList>)
         })
     }
 

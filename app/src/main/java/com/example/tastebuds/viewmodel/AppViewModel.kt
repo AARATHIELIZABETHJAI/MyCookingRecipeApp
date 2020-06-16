@@ -162,6 +162,7 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
                     is ServiceResponse.Success -> {
                         _loading.value = false
                         _recipeDetail.value = serviceResponse.data
+                        println("OUTPUT ${_recipeDetail.value}")
                     }
                     is ServiceResponse.Error -> {
                         _loading.value = false

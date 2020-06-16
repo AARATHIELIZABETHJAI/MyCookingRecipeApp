@@ -38,18 +38,22 @@ class CookingStepsFragment : Fragment() {
         ).get(AppViewModel::class.java)
         binding.viewModel = viewModel
         val cookingSteps = viewModel.getCookingSteps()
-        for (i in 0..(cookingSteps.size - 1)) {
-            val textView = TextView(context)
-            val layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            )
-            layoutParams.setMargins(40,0,10,10)
-            textView.layoutParams = layoutParams
-            textView.text = "${i + 1})   ${cookingSteps[i]}"
-            textView.setPadding(15, 10, 3, 0)
-            textView.setTextColor(Color.parseColor("#000000"))
-            cookingStepsLayout.addView(textView)
+        if (cookingSteps.size > 0)
+        {
+            for (i in 0 until cookingSteps.size) {
+                val textView = TextView(context)
+                val layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                )
+                layoutParams.setMargins(40,0,10,10)
+                textView.layoutParams = layoutParams
+                textView.text = "${i + 1})   ${cookingSteps[i]}"
+                textView.setPadding(15, 10, 3, 0)
+                textView.setTextColor(Color.parseColor("#000000"))
+                cookingStepsLayout.addView(textView)
+            }
         }
+
     }
 }
