@@ -34,18 +34,4 @@ interface MyNetworkApi {
         @Query("apiKey")apiKey:String
     ):Response<DailyRecipe>
 
-    companion object {
-        operator fun invoke(): MyNetworkApi {
-            return Retrofit.Builder().baseUrl("https://api.spoonacular.com/recipes/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(CoroutineCallAdapterFactory())
-                .build()
-                .create(MyNetworkApi::class.java)
-        }
-    }
-
-
-
-
-
 }

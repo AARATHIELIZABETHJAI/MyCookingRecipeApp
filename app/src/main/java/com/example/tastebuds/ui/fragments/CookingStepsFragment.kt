@@ -14,14 +14,23 @@ import com.example.tastebuds.databinding.FragmentCookingStepsBinding
 import com.example.tastebuds.viewmodel.AppViewModel
 import com.example.tastebuds.viewmodel.AppViewModelFactory
 import kotlinx.android.synthetic.main.fragment_cooking_steps.*
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.kodein
+import org.kodein.di.generic.instance
 
 /**
  * A simple [Fragment] subclass.
  */
-class CookingStepsFragment : Fragment() {
+class CookingStepsFragment : Fragment(),KodeinAware {
 
     private lateinit var binding: FragmentCookingStepsBinding
     private lateinit var viewModel: AppViewModel
+
+    override val kodein: Kodein by kodein()
+    private val appViewModelFactory: AppViewModelFactory by instance()
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,7 +43,7 @@ class CookingStepsFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(
             requireActivity(),
-            AppViewModelFactory(requireActivity().application)
+            appViewModelFactory
         ).get(AppViewModel::class.java)
         binding.viewModel = viewModel
         val cookingSteps = viewModel.getCookingSteps()

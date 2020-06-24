@@ -11,7 +11,8 @@ import com.example.tastebuds.ui.adapters.ShoppingList
 
 @Database(
     entities = [RecipeDetail::class,ShoppingList::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 @TypeConverters(Converters::class)
 abstract class AppDataBase : RoomDatabase() {
@@ -23,21 +24,19 @@ abstract class AppDataBase : RoomDatabase() {
         @Volatile
         private var instance: AppDataBase? = null
         private val LOCK = Any()
-        fun getInstance(context: Context) = instance
-            ?: synchronized(LOCK) {
-            instance
-                ?: buildDatabase(
-                    context
-                ).also {
+
+        operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
+            instance ?: buildDatabase(context).also {
                 instance = it
             }
         }
 
-        private fun buildDatabase(context: Context) = Room.databaseBuilder(
-            context.applicationContext,
-            AppDataBase::class.java,
-            "AppRecipeDataBase"
-        ).build()
-
+        private fun buildDatabase(context: Context) =
+            Room.databaseBuilder(
+                context.applicationContext,
+                AppDataBase::class.java,
+                "AppDatabase.db"
+            ).build()
     }
+
 }

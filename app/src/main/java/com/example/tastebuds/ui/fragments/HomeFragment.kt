@@ -20,16 +20,24 @@ import com.example.tastebuds.ui.adapters.CuisinesAdapter
 import com.example.tastebuds.viewmodel.AppViewModel
 import com.example.tastebuds.viewmodel.AppViewModelFactory
 import kotlinx.android.synthetic.main.fragment_home.*
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.kodein
+import org.kodein.di.generic.instance
 
 
 /**
  * A simple [Fragment] subclass.
  */
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(),KodeinAware {
 
     private lateinit var ctx: Context
     private lateinit var viewModel: AppViewModel
     private lateinit var binding:FragmentHomeBinding
+
+    override val kodein: Kodein by kodein()
+    private val appViewModelFactory: AppViewModelFactory by instance()
+
 
     override fun onAttach(context: Context) {
         ctx = context
@@ -52,8 +60,7 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity(),
-            AppViewModelFactory(requireActivity().application)
+        viewModel = ViewModelProvider(requireActivity(),appViewModelFactory
         ).get(
             AppViewModel::class.java)
         binding.viewModel = viewModel

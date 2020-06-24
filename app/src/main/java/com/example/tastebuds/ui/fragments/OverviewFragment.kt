@@ -9,13 +9,20 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.tastebuds.databinding.FragmentOverviewBinding
 import com.example.tastebuds.viewmodel.AppViewModel
 import com.example.tastebuds.viewmodel.AppViewModelFactory
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.kodein
+import org.kodein.di.generic.instance
 
 /**
  * A simple [Fragment] subclass.
  */
-class OverviewFragment : Fragment() {
+class OverviewFragment : Fragment(),KodeinAware {
     private lateinit var binding:FragmentOverviewBinding
     private  lateinit var viewModel: AppViewModel
+    override val kodein: Kodein by kodein()
+    private val appViewModelFactory: AppViewModelFactory by instance()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,8 +35,7 @@ class OverviewFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity(),
-            AppViewModelFactory(requireActivity().application)
+        viewModel = ViewModelProvider(requireActivity(),appViewModelFactory
         ).get(
             AppViewModel::class.java)
         binding.viewModel = viewModel

@@ -12,16 +12,24 @@ import com.example.tastebuds.ui.adapters.ShoppingListAdapter
 import com.example.tastebuds.databinding.FragmentShoppingListBinding
 import com.example.tastebuds.ui.adapters.ShoppingList
 import com.example.tastebuds.viewmodel.AppViewModel
+import com.example.tastebuds.viewmodel.AppViewModelFactory
 import kotlinx.android.synthetic.main.fragment_shopping_list.*
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.kodein
+import org.kodein.di.generic.instance
 import java.util.ArrayList
 
 /**
  * A simple [Fragment] subclass.
  */
-class ShoppingListFragment : Fragment() {
+class ShoppingListFragment : Fragment(),KodeinAware {
     private lateinit var binding: FragmentShoppingListBinding
     private lateinit var viewModel: AppViewModel
     private var deleteIngredient : ShoppingList? = null
+    override val kodein: Kodein by kodein()
+    private val appViewModelFactory: AppViewModelFactory by instance()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +42,7 @@ class ShoppingListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity()).get(AppViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity(),appViewModelFactory).get(AppViewModel::class.java)
         binding.viewModel = viewModel
         val shoppingListAdapter =
             ShoppingListAdapter(

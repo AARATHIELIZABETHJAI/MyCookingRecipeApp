@@ -16,14 +16,21 @@ import com.example.tastebuds.viewmodel.AppViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_recipe_detail.*
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.kodein
+import org.kodein.di.generic.instance
 
 /**
  * A simple [Fragment] subclass.
  */
-class RecipeDetailFragment : Fragment() {
+class RecipeDetailFragment : Fragment(),KodeinAware {
     private lateinit var binding: FragmentRecipeDetailBinding
     private lateinit var viewModel: AppViewModel
     var fabVisible = false
+    override val kodein: Kodein by kodein()
+    private val appViewModelFactory: AppViewModelFactory by instance()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,8 +43,7 @@ class RecipeDetailFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity(),
-            AppViewModelFactory(requireActivity().application)
+        viewModel = ViewModelProvider(requireActivity(),appViewModelFactory
         ).get(
             AppViewModel::class.java)
         binding.viewModel = viewModel

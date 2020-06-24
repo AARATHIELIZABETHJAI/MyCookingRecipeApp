@@ -12,15 +12,22 @@ import com.example.tastebuds.R
 import com.example.tastebuds.databinding.FragmentIngredientsBinding
 import com.example.tastebuds.ui.adapters.ShoppingList
 import com.example.tastebuds.viewmodel.AppViewModel
+import com.example.tastebuds.viewmodel.AppViewModelFactory
 import kotlinx.android.synthetic.main.fragment_ingredients.*
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.kodein
+import org.kodein.di.generic.instance
 
 
 /**
  * A simple [Fragment] subclass.
  */
-class IngredientsFragment : Fragment() {
+class IngredientsFragment : Fragment(),KodeinAware {
     private lateinit var binding: FragmentIngredientsBinding
     private lateinit var viewModel: AppViewModel
+    override val kodein: Kodein by kodein()
+    private val appViewModelFactory: AppViewModelFactory by instance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +40,7 @@ class IngredientsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity()).get(AppViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity(),appViewModelFactory).get(AppViewModel::class.java)
         binding.viewModel = viewModel
         val extendedIngredients = viewModel.recipeDetail.value?.extendedIngredients
         if(extendedIngredients!=null)

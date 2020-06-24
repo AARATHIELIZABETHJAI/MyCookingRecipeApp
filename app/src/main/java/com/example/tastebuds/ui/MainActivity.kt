@@ -10,7 +10,6 @@ import com.example.tastebuds.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var navFragment: Fragment
     private lateinit var appBarConfiguration:AppBarConfiguration
     private lateinit var binding:ActivityMainBinding
 
@@ -27,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment,
-                R.id.accountFragment,
                 R.id.favouritesFragment,
                 R.id.shoppingListFragment,
                 R.id.settingsFragment,
@@ -46,6 +44,5 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return findNavController(R.id.nav_host_fragment).navigateUp(appBarConfiguration)|| super.onSupportNavigateUp()
     }
-
 }
 

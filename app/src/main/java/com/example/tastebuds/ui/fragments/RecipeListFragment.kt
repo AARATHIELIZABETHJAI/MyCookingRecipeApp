@@ -21,14 +21,21 @@ import com.example.tastebuds.viewmodel.AppViewModel
 import com.example.tastebuds.viewmodel.AppViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.recipe_list_fragment.*
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.kodein
+import org.kodein.di.generic.instance
 
 
-class RecipeListFragment : Fragment() {
+class RecipeListFragment : Fragment(),KodeinAware {
     private lateinit var binding: RecipeListFragmentBinding
     private lateinit var viewModel: AppViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var myAdapter: RecipeListAdapter
     private lateinit var ctx: Context
+    override val kodein: Kodein by kodein()
+    private val appViewModelFactory: AppViewModelFactory by instance()
+
 
     companion object {
         fun newInstance() =
@@ -53,8 +60,7 @@ class RecipeListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         Log.e("FRAG", "onActivityCreated")
-        viewModel = ViewModelProvider(requireActivity(),
-            AppViewModelFactory(requireActivity().application)
+        viewModel = ViewModelProvider(requireActivity(),appViewModelFactory
         ).get(
             AppViewModel::class.java)
 

@@ -5,6 +5,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.tastebuds.data.network.responses.Result
 import com.example.tastebuds.data.network.responses.ServiceResponse
 import com.example.tastebuds.data.repository.UserRepository
@@ -19,11 +20,10 @@ import kotlin.collections.ArrayList
 const val NUMBER_OF_RESULTS = 10
 const val APIKEY: String = "beb23c70f0264a09b60b9f0aa44b1ea5"
 
-class AppViewModel(application: Application) : AndroidViewModel(application) {
+class AppViewModel(private val repository: UserRepository) : ViewModel() {
 
-    private val repository: UserRepository
-    val allfavouriteRecipes: LiveData<List<RecipeDetail>>
-    val shoppingListItems : LiveData<List<ShoppingList>>
+    val allfavouriteRecipes: LiveData<List<RecipeDetail>> = repository.allFavouriteRecipes
+    val shoppingListItems : LiveData<List<ShoppingList>> = repository.shoppingListItems
 
     private var _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean>
@@ -34,18 +34,6 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         get() = _errorloading
 
     init {
-        val favouriteRecipesDao = AppDataBase.getInstance(
-            application
-        ).getFavouriteRecipesDao()
-        val shoppingListDao = AppDataBase.getInstance(
-            application
-        ).getShoppingListDao()
-        repository = UserRepository(
-            favouriteRecipesDao,
-            shoppingListDao
-        )
-        allfavouriteRecipes = repository.allFavouriteRecipes
-        shoppingListItems = repository.shoppingListItems
         _loading.value = false
         _errorloading.value = false
     }

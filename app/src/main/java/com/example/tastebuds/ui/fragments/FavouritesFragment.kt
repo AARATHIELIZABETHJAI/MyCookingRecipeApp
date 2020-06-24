@@ -18,14 +18,22 @@ import com.example.tastebuds.ui.adapters.FavouriteRecipesAdapter
 import com.example.tastebuds.viewmodel.AppViewModel
 import com.example.tastebuds.viewmodel.AppViewModelFactory
 import kotlinx.android.synthetic.main.fragment_favourites.*
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.kodein
+import org.kodein.di.generic.instance
 
 /**
  * A simple [Fragment] subclass.
  */
-class FavouritesFragment : Fragment() {
+class FavouritesFragment : Fragment(),KodeinAware{
     private lateinit var binding: FragmentFavouritesBinding
     private lateinit var viewModel: AppViewModel
     private lateinit var favouriteRecipesAdapter: FavouriteRecipesAdapter
+
+    override val kodein: Kodein by kodein()
+    private val appViewModelFactory: AppViewModelFactory by instance()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,8 +46,7 @@ class FavouritesFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity(),
-            AppViewModelFactory(requireActivity().application)
+        viewModel = ViewModelProvider(requireActivity(),appViewModelFactory
         ).get(
             AppViewModel::class.java)
 
