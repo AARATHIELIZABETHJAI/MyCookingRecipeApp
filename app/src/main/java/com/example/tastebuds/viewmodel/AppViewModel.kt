@@ -1,28 +1,23 @@
 package com.example.tastebuds.viewmodel
 
-
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.tastebuds.data.network.responses.Result
 import com.example.tastebuds.data.network.responses.ServiceResponse
 import com.example.tastebuds.data.repository.UserRepository
-import com.example.tastebuds.persistence.AppDataBase
 import com.example.tastebuds.persistence.models.RecipeDetail
 import com.example.tastebuds.ui.adapters.ShoppingList
 import com.google.gson.internal.LinkedTreeMap
 import kotlinx.coroutines.*
 import kotlin.collections.ArrayList
 
-//https://api.spoonacular.com/recipes/search?query=yogurt&apiKey=beb23c70f0264a09b60b9f0aa44b1ea5
 const val NUMBER_OF_RESULTS = 10
 const val APIKEY: String = "beb23c70f0264a09b60b9f0aa44b1ea5"
 
 class AppViewModel(private val repository: UserRepository) : ViewModel() {
 
-    val allfavouriteRecipes: LiveData<List<RecipeDetail>> = repository.allFavouriteRecipes
+    val allFavouriteRecipes: LiveData<List<RecipeDetail>> = repository.allFavouriteRecipes
     val shoppingListItems : LiveData<List<ShoppingList>> = repository.shoppingListItems
 
     private var _loading = MutableLiveData<Boolean>()
@@ -139,7 +134,7 @@ class AppViewModel(private val repository: UserRepository) : ViewModel() {
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.IO)
 
 
-    fun searchRecipebyId(recipeId: Int) {
+    private fun searchRecipebyId(recipeId: Int) {
         _loading.value = true
         coroutineScope.launch {
             val serviceResponse = repository.searchRecipebyId(recipeId, true,
@@ -150,7 +145,6 @@ class AppViewModel(private val repository: UserRepository) : ViewModel() {
                     is ServiceResponse.Success -> {
                         _loading.value = false
                         _recipeDetail.value = serviceResponse.data
-                        println("OUTPUT ${_recipeDetail.value}")
                     }
                     is ServiceResponse.Error -> {
                         _loading.value = false
@@ -207,14 +201,13 @@ class AppViewModel(private val repository: UserRepository) : ViewModel() {
     // Favourite
     fun insertFavouriteRecipe(recipeDetail: RecipeDetail) {
         coroutineScope.launch {
-            val rowId = repository.insertFavouriteRecipe(recipeDetail)
+           repository.insertFavouriteRecipe(recipeDetail)
         }
     }
 
     fun deleteFavouriteRecipe(recipeDetail: RecipeDetail) {
         coroutineScope.launch {
-            val rowsDeleted = repository.deleteFavouriteRecipe(recipeDetail)
-            println("hi")
+            repository.deleteFavouriteRecipe(recipeDetail)
         }
     }
 
@@ -252,8 +245,7 @@ class AppViewModel(private val repository: UserRepository) : ViewModel() {
     fun insertToShoppingList(ingredient : ShoppingList)
     {
         coroutineScope.launch {
-            val id = repository.insertToShoppingList(ingredient)
-            println("ROW_ ${id}")
+            repository.insertToShoppingList(ingredient)
         }
     }
 
@@ -261,15 +253,8 @@ class AppViewModel(private val repository: UserRepository) : ViewModel() {
     fun deleteFromShoppingList(ingredient: ShoppingList)
     {
         coroutineScope.launch {
-            val rowsDeleted = repository.deleteFromShoppingList(ingredient)
-            println("ROW $rowsDeleted")
+            repository.deleteFromShoppingList(ingredient)
         }
     }
-
 }
 
-
-//    override fun onCleared() {
-//        super.onCleared()
-//        viewModelJob.cancel()
-//    }

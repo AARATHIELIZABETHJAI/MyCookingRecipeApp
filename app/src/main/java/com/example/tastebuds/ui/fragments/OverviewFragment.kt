@@ -39,9 +39,5 @@ class OverviewFragment : Fragment(),KodeinAware {
         ).get(
             AppViewModel::class.java)
         binding.viewModel = viewModel
-//        var test = TextView(context)
-//        test.text = "CHECKKKKKKKKKKK"
-//        overViewLayout.addView(test)
-//        viewModel.recipeDetail.observe(viewLifecycleOwner, Observer {  })
     }
 }

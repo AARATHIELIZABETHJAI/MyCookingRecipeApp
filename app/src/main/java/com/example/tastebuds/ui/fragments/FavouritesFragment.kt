@@ -65,7 +65,7 @@ class FavouritesFragment : Fragment(),KodeinAware{
 
     private fun subscribeObservers() {
 
-        viewModel.allfavouriteRecipes.observe(viewLifecycleOwner, Observer {
+        viewModel.allFavouriteRecipes.observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 favouriteRecipesAdapter.updateList(it as ArrayList<RecipeDetail>)
             }
