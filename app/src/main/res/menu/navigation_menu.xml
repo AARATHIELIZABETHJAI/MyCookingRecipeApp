@@ -7,10 +7,7 @@
             android:id="@id/homeFragment"
             android:title="@string/home"
             android:icon="@drawable/ic_home_black_24dp"/>
-        <item
-            android:id="@id/accountFragment"
-            android:title="@string/account"
-            android:icon="@drawable/ic_account_circle_black_24dp"/>
+
         <item
             android:id="@id/favouritesFragment"
             android:title="@string/favourites"

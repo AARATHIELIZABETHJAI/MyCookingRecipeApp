@@ -160,13 +160,16 @@ class AppViewModel(private val repository: UserRepository) : ViewModel() {
         val cookingSteps = ArrayList<String>()
         val analyzedInstructions =
             recipeDetail.value?.analyzedInstructions?.get(0) as LinkedTreeMap<String, String>
-        if (analyzedInstructions.containsKey("steps")) {
-            val stepsArrayList =
-                analyzedInstructions.getValue("steps") as ArrayList<LinkedTreeMap<String, String>>
-            for (i in 0..(stepsArrayList.size - 1)) {
-                if (stepsArrayList[i].contains("step")) {
-                    val cookingStep = stepsArrayList[i].getValue("step")
-                    cookingSteps.add(cookingStep)
+        if(analyzedInstructions!=null)
+        {
+            if (analyzedInstructions.containsKey("steps")) {
+                val stepsArrayList =
+                    analyzedInstructions.getValue("steps") as ArrayList<LinkedTreeMap<String, String>>
+                for (i in 0..(stepsArrayList.size - 1)) {
+                    if (stepsArrayList[i].contains("step")) {
+                        val cookingStep = stepsArrayList[i].getValue("step")
+                        cookingSteps.add(cookingStep)
+                    }
                 }
             }
         }
