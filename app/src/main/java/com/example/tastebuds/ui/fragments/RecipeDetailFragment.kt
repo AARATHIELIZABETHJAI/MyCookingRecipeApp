@@ -73,8 +73,6 @@ class RecipeDetailFragment : Fragment(),KodeinAware {
 
     private fun subscribeObservers() {
         viewModel.recipeDetail.observe(viewLifecycleOwner, Observer {
-            println("DATABASE ${it}")
-            println("DATABASE ${viewModel.loading.value}")
          if(!(viewModel.loading.value!!)) {
              if (it != null)
                 nestedView.visibility = View.VISIBLE

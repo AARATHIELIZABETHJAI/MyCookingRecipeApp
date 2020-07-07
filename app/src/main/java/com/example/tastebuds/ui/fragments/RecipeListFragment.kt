@@ -51,7 +51,6 @@ class RecipeListFragment : Fragment(),KodeinAware {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.e("FRAG", "onCreateView")
         binding = RecipeListFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         return binding.root
@@ -59,7 +58,6 @@ class RecipeListFragment : Fragment(),KodeinAware {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        Log.e("FRAG", "onActivityCreated")
         viewModel = ViewModelProvider(requireActivity(),appViewModelFactory
         ).get(
             AppViewModel::class.java)
@@ -111,7 +109,6 @@ class RecipeListFragment : Fragment(),KodeinAware {
         })
 
         viewModel.navigateToDetail.observe(viewLifecycleOwner, Observer {
-            Log.e("FRAG", "CHECKKKKKKKKKKKKKKKKKKKKKKKKK")
             if (viewModel.navigateToDetail.value != null) {
                 if(viewModel.navigateToDetail.value!!)
                 {
@@ -124,25 +121,5 @@ class RecipeListFragment : Fragment(),KodeinAware {
                 }
             }
         })
-    }
-
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Log.e("FRAG", "onDestroyView")
-    }
-
-    override fun onStop() {
-        super.onStop()
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-    }
-
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.e("FRAG", "onDestroy")
     }
 }
